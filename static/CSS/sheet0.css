@@ -1,0 +1,11 @@
+.btn{
+    background-color: rgb(149, 74, 219)!important; 
+    color: white;
+    border-color: rgb(149, 74, 219)!important;
+}
+
+.btn:hover{
+    background-color: aliceblue !important;
+    color: rgb(149, 74, 219)!important;
+    border: 2px solid rgb(149, 74, 219)!important;
+}

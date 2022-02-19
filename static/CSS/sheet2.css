@@ -1,0 +1,19 @@
+.d-flex{
+    display: flex;
+    /* border: 2px solid black; */
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 20px;
+    justify-content: center;
+    background-color:rgb(255, 255, 255);
+}
+
+@media(max-width : 800px){
+    .myBox{
+        width: 300px;
+    }
+}
+
+body{
+    background-color: rgb(13, 233, 116);
+}
