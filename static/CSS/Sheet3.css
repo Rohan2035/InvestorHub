@@ -15,7 +15,7 @@
 
 
 body{
-    background-image: url("/static/Images/BackgroundB.jpg");
+    background-image: url("/static/Images/BackgroundC.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -54,3 +54,4 @@ body{
 .form-control{
     width: 250px !important;
 }
+

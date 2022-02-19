@@ -148,6 +148,17 @@ def validateContact(request):
     else:
         return HttpResponse("Error not found")
 
+def deletePost(request, slug):
 
+    if request.user.is_authenticated:
+        deletePost = sp.objects.get(slug = slug)
+        deletePost.delete()
+        messages.success(request, 'Post Sucessfully Deleted!!')
+        return redirect('Index')
+    else:
+        return HttpResponse('<h1>Error</h1>')
+
+
+# Remove this 
 def test(request):
-    return HttpResponse('Hello')
+    pass
