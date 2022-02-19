@@ -3,6 +3,10 @@ from stockpost.models import StockPosts as sp
 from django.contrib import messages
 import random as rn
 
+# To Login as Admin
+# Username : Company 
+# Password : 1234
+
 # Create your views here.
 def index(request):
     all_post = list(sp.objects.all())
@@ -112,7 +116,9 @@ def validate(request):
 
 
 def DisplayAll(request):
-    post = sp.objects.all()
+    post = sp.objects.filter(author = request.user)
+    if(len(post) == 0):
+        return HttpResponse('<h1 align> No Post Added </h1>')
     context = {"post" : post}
     return render(request, "DisplayAll.html", context)
 
