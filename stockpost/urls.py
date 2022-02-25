@@ -16,5 +16,5 @@ urlpatterns = [
     path('displayall/', views.DisplayAll, name="display"),
     path('deletePost/<str:slug>', views.deletePost, name="delete"),
     # Remove This
-    path('test/<str:slug>', views.test, name='Test'),
+    path('test/', views.test, name='Test'),
 ]

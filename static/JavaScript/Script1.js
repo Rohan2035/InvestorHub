@@ -8,3 +8,9 @@ for (let i = 0; i < x.length; i ++) {
   x[i].innerHTML = s.slice(0, 150) + '...';
 }
 
+function deleteFunc() {
+  let y = document.querySelector('#del');
+  y.submit();
+}
+
+

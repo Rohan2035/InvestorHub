@@ -161,4 +161,9 @@ def deletePost(request, slug):
 
 # Remove this 
 def test(request):
-    pass
+
+    if request.method == 'POST':
+        id = request.POST['postId']
+        return HttpResponse(id)
+    else:
+        return HttpResponse('Illegal Access')

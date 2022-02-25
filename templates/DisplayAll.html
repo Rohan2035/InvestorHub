@@ -27,6 +27,8 @@
   </head>
 
   <body>
+
+    <!-- Nav Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="http://127.0.0.1:8000/">InvestorHub</a>
 
@@ -271,17 +273,26 @@
         {% for i in post %}
         <div class="card-body border-bottom">
           <h5 class="card-title">{{i.Name}}</h5>
+          
           <p class="card-text" style="font-size: small">
             <div class="box">
                 {{i.content|safe}}
             </div>
           </p>
+
           <a href="http://127.0.0.1:8000/content/{{i.slug}}">
-            <span class="badge badge-warning">Read More</span></a
-          >
-          <a href="http://127.0.0.1:8000/deletePost/{{i.slug}}">
-            <span class="badge badge-danger">Delete Post</span>
+            <span class="badge badge-warning">Read More</span>
           </a>
+
+          <!-- Logic For Deleting -->
+          <form method="post" action="/test/" id="del">
+            {% csrf_token %}
+            <input type="hidden" value="{{i.post_id}}" name="postId" id="postId">
+            <a href="#" onclick="deleteFunc()">
+              <span class="badge badge-danger">Delete Post</span>
+            </a>
+          </form>
+
         </div>
         {% endfor %}
       </div>
