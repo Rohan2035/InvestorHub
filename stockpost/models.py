@@ -25,16 +25,4 @@ class Contact(models.Model):
         return self.name
 
 
-# Comments Model
-class PostComment(models.Model):
-    sno = models.AutoField(primary_key=True)
-    comment = models.TextField(default=None)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(StockPosts, on_delete=models.CASCADE)
-    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
-    timeStamp = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.user
-
 

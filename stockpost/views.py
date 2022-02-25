@@ -128,7 +128,6 @@ def contact(request):
 
 
 
-
 def validateContact(request):
 
     if request.method == 'POST':
