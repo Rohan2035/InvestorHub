@@ -14,7 +14,7 @@ urlpatterns = [
     path('login/', views2.handleLogin, name="login"),
     path('logout/', views2.handleLogout, name="logout"),
     path('displayall/', views.DisplayAll, name="display"),
-    path('deletePost/<str:slug>', views.deletePost, name="delete"),
+    path('deletePost/', views.deletePost, name="delete"),
     # Remove This
     path('test/', views.test, name='Test'),
 ]

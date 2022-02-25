@@ -117,9 +117,8 @@ def validate(request):
 
 def DisplayAll(request):
     post = sp.objects.filter(author = request.user)
-    if(len(post) == 0):
-        return HttpResponse('<h1 align> No Post Added </h1>')
     context = {"post" : post}
+    
     return render(request, "DisplayAll.html", context)
 
 
@@ -148,22 +147,17 @@ def validateContact(request):
     else:
         return HttpResponse("Error not found")
 
-def deletePost(request, slug):
+def deletePost (request):
 
-    if request.user.is_authenticated:
-        deletePost = sp.objects.get(slug = slug)
-        deletePost.delete()
-        messages.success(request, 'Post Sucessfully Deleted!!')
+    if request.method == 'POST':
+        id = request.POST['postId']
+        post = sp.objects.get(post_id = id)
+        post.delete()
         return redirect('Index')
     else:
-        return HttpResponse('<h1>Error</h1>')
+        return HttpResponse ('Illeagal access')
 
 
 # Remove this 
 def test(request):
-
-    if request.method == 'POST':
-        id = request.POST['postId']
-        return HttpResponse(id)
-    else:
-        return HttpResponse('Illegal Access')
+    pass

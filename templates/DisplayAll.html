@@ -267,13 +267,13 @@
     <div class="container mt-3 mb-5">
       <div class="card">
         <div class="card-header">
-          <h1>All Posts</h1>
+          <h1 id="heading-display-all">All Posts</h1>
         </div>
 
         {% for i in post %}
         <div class="card-body border-bottom">
           <h5 class="card-title">{{i.Name}}</h5>
-          
+
           <p class="card-text" style="font-size: small">
             <div class="box">
                 {{i.content|safe}}
@@ -285,7 +285,7 @@
           </a>
 
           <!-- Logic For Deleting -->
-          <form method="post" action="/test/" id="del">
+          <form method="post" action="/deletePost/" id="del">
             {% csrf_token %}
             <input type="hidden" value="{{i.post_id}}" name="postId" id="postId">
             <a href="#" onclick="deleteFunc()">
