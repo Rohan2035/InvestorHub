@@ -9,10 +9,15 @@ import random as rn
 
 # Create your views here.
 def index(request):
+
     all_post = list(sp.objects.all())
+
     l = len(all_post)
     item = rn.sample(all_post, l)
     context = {'post' : item}
+
+    print(request.user)
+
     return render(request, 'index.html', context) 
 
 
@@ -117,6 +122,7 @@ def validate(request):
 
 def DisplayAll(request):
     post = sp.objects.filter(author = request.user)
+
     context = {"post" : post}
     
     return render(request, "DisplayAll.html", context)
@@ -146,16 +152,27 @@ def validateContact(request):
     else:
         return HttpResponse("Error not found")
 
+
+
 def deletePost (request):
 
     if request.method == 'POST':
-        id = request.POST['postId']
+        id = request.POST['post_del']
         post = sp.objects.get(post_id = id)
         post.delete()
-        return redirect('Index')
+        
+        messages.success(request, "Post Deleted")
+        return redirect ('Index')
     else:
         return HttpResponse ('Illeagal access')
 
+
+def edit_post (request):
+
+    if request.method == 'POST':
+        id = request.POST['postId']
+        
+    return HttpResponse(id)
 
 # Remove this 
 def test(request):

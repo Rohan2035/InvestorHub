@@ -285,11 +285,20 @@
           </a>
 
           <!-- Logic For Deleting -->
-          <form method="post" action="/deletePost/" id="del">
+          <form method="post" action="/deletePost/" class="del" id="d-{{i.post_id}}">
             {% csrf_token %}
-            <input type="hidden" value="{{i.post_id}}" name="postId" id="postId">
-            <a href="#" onclick="deleteFunc()">
+            <input type="hidden" value="{{i.post_id}}" name="post_del">
+            <a href="#" onclick="deleteFunc(this)">
               <span class="badge badge-danger">Delete Post</span>
+            </a>
+          </form>
+
+          
+          <form method="post" action="/editPost/" class="edit" id="e-{{i.post_id}}">
+            {% csrf_token %}
+            <input type="hidden" value="{{i.post_id}}" name="post_ed">
+            <a href="#" onclick="editFunc()">
+              <span class="badge badge-success">Edit Post</span>
             </a>
           </form>
 

@@ -17,9 +17,19 @@ if (x.length == 0) {
 
 }
 
-function deleteFunc() {
-  let y = document.querySelector('#del');
-  y.submit();
+
+function deleteFunc (e) {
+
+  console.log(e.parentNode.id);
+  let parent_id = e.parentNode.id;
+  let del = document.querySelector(`#${parent_id}`);
+  del.submit();
+
+}
+
+function editFunc () {
+  let e = document.querySelector('.edit');
+  e.submit();
 }
 
 
