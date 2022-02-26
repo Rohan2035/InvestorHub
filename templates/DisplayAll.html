@@ -297,7 +297,7 @@
           <form method="post" action="/editPost/" class="edit" id="e-{{i.post_id}}">
             {% csrf_token %}
             <input type="hidden" value="{{i.post_id}}" name="post_ed">
-            <a href="#" onclick="editFunc()">
+            <a href="#" onclick="editFunc(this)">
               <span class="badge badge-success">Edit Post</span>
             </a>
           </form>

@@ -170,9 +170,16 @@ def deletePost (request):
 def edit_post (request):
 
     if request.method == 'POST':
-        id = request.POST['postId']
-        
-    return HttpResponse(id)
+
+        post = request.POST['post_ed']
+        context = {'post' : post}
+
+        return render (request, 'editPost.html', context)
+
+    else:    
+        return HttpResponse("Access Denied")
+
+
 
 # Remove this 
 def test(request):

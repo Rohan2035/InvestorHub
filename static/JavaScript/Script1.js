@@ -27,9 +27,14 @@ function deleteFunc (e) {
 
 }
 
-function editFunc () {
-  let e = document.querySelector('.edit');
-  e.submit();
+function editFunc (e) {
+  
+  console.log(e.parentNode.id);
+  let parent_id = e.parentNode.id;
+  let edit = document.querySelector(`#${parent_id}`);
+  
+  edit.submit();
+  
 }
 
 
