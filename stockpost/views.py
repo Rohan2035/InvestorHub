@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from stockpost.models import StockPosts as sp
 from django.contrib import messages
 import random as rn
+import os
 
 # To Login as Admin
 # Username : Company 
@@ -15,8 +16,6 @@ def index(request):
     l = len(all_post)
     item = rn.sample(all_post, l)
     context = {'post' : item}
-
-    print(request.user)
 
     return render(request, 'index.html', context) 
 
@@ -64,6 +63,7 @@ def search(request):
 
 
 
+# Add Content and validate function are connected 
 def addContent(request):
 
     if request.user.is_authenticated:
@@ -71,8 +71,6 @@ def addContent(request):
 
     else:
         return HttpResponse("Error 404 Not found")
-
-
 
 
 
@@ -119,7 +117,6 @@ def validate(request):
 
 
 
-
 def DisplayAll(request):
     post = sp.objects.filter(author = request.user)
 
@@ -129,6 +126,7 @@ def DisplayAll(request):
 
 
 
+# These 3 contact function are connected 
 def contact(request):
     return render(request, "Contact.html")
 
@@ -167,13 +165,47 @@ def deletePost (request):
         return HttpResponse ('Illeagal access')
 
 
+
+# These 3 edit functions are connected 
+def edit_Handler(post):
+    global edit_post
+    edit_post = post
+
+
+def validate_edit(request):
+    if request.method == 'POST':
+
+        new_post_name = request.POST['newName']
+        new_post_content = request.POST['newPost']
+
+        if len(request.FILES) != 0:
+            if len(edit_post.img1) > 0:
+                os.remove(edit_post.img1.path)
+            edit_post.img1 = request.FILES["photo"]
+
+
+
+        edit_post.Name = new_post_name
+        edit_post.content = new_post_content
+        edit_post.save()
+
+        messages.success(request, "Successfuly Edited")
+    else:
+        return HttpResponse("Illegal Access")
+
+
+
 def edit_post (request):
 
     if request.method == 'POST':
 
-        post = request.POST['post_ed']
+        post_id = request.POST['post_ed']
+        post = sp.objects.get(post_id = post_id)
+        
         context = {'post' : post}
 
+        edit_Handler(post)
+    
         return render (request, 'editPost.html', context)
 
     else:    
@@ -183,4 +215,4 @@ def edit_post (request):
 
 # Remove this 
 def test(request):
-    pass
+    return HttpResponse("This is for testing")
