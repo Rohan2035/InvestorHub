@@ -34,14 +34,6 @@ def content(request, slug):
     return render(request, 'content.html', context)
 
 
-
-def category(request, Category):
-    post = sp.objects.filter(Category=Category)
-    context = {"cat" : post}
-    return render(request, 'cat.html', context)
-
-
-
 def search(request):
 
     query = request.GET['query']
@@ -83,10 +75,13 @@ def validate(request):
         
         img = request.FILES["photo"]
 
+        check_post = sp.objects.filter(Name=name)
 
         # Few basic checks
+        if check_post:
+            return HttpResponse("The Post already exists")
 
-        # Slug Checks
+        # Creating Slug 
         slug = str(name).lower()
         slug = slug.split()
         slug_list = []
@@ -94,9 +89,7 @@ def validate(request):
         for i in slug:
             if(i.isalnum):
                 slug_list.append(i)
-
         slug = "".join(slug_list)
-
 
         # Name 
         name = name.lower()
