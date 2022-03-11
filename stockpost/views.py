@@ -206,6 +206,3 @@ def edit_post (request):
 
 
 
-# Remove this 
-def test(request):
-    return HttpResponse("This is for testing")

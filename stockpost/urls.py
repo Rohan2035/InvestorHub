@@ -15,7 +15,5 @@ urlpatterns = [
     path('displayall/', views.DisplayAll, name="display"),
     path('deletePost/', views.deletePost, name="delete"),
     path('editPost/', views.edit_post, name="editPost"),
-    path('validateEdit/', views.validate_edit, name="validateEdit"),
-    # Remove This
-    path('test/', views.test, name='Test'),
+    path('validateEdit/', views.validate_edit, name="validateEdit")
 ]
