@@ -1,4 +1,3 @@
-from tkinter import CASCADE
 from django.db import models
 from django.db.models import DateField
 from django.contrib.auth.models import User
@@ -11,7 +10,7 @@ class StockPosts(models.Model):
     author = models.CharField(max_length=50, default = None)
     content = models.TextField(default=None)
     date = DateField(auto_now_add=True)
-    img1 = models.ImageField(upload_to = "images")
+    img1 = models.ImageField(null=True,upload_to = "images")
 
     def __str__(self):
         return self.Name
