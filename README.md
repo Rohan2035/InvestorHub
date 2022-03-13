@@ -14,5 +14,5 @@ You'll be given a link copy paste it in the browser
 To access the admin panel:
 On the navigation bar in browser type "/admin" behind the link address
 
-Username : Company 
-Password : 1234
+**Username** : Company 
+**Password** : 1234
