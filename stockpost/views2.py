@@ -30,8 +30,16 @@ def handleSignup(request):
                 #Create User
                 myuser = User.objects.create_user(name, mail, password)
                 myuser.save()
-                messages.success(request, f'Welcome to FarmBlock {name}') 
+                
+                #Authenticating User
+                us = authenticate(username = name, password = password)
 
+                if us is not None:
+                    login(request, us)
+                    messages.success(request, f'Welcome to InvestorHub {name}') 
+
+                else:
+                    messages.danger(request, f'Login Failed')
             
             return redirect('Index')
 
