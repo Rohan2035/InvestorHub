@@ -8,7 +8,8 @@ Requirements to Run the Project:
 Command to Run the project:
 Locate the folder where the project directory is Present and then open command Prompt/Powershell and then type:
 
-      **Python manage.py runserver**
+ **Python manage.py runserver**
+      
 You'll be given a link copy paste it in the browser
 
 To access the admin panel:
