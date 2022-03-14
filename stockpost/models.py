@@ -1,9 +1,12 @@
 from django.db import models
 from django.db.models import DateField
-# from django.contrib.auth.models import User
 
 # StockPost Model
 class StockPosts(models.Model):
+
+    class Meta:
+        verbose_name_plural = "Stock Posts"
+
     post_id = models.AutoField(primary_key = True)
     slug = models.CharField(max_length=50, default=None)
     Name = models.CharField(max_length=50, default=None)
@@ -25,12 +28,18 @@ class Contact(models.Model):
 
 # Comment Section
 class comments(models.Model):
+
+    class Meta:
+        verbose_name_plural = "Comments"
+
+    
     post_id = models.ForeignKey(StockPosts, on_delete=models.CASCADE)
+    post_name = models.CharField(max_length=50, default=None)
     comment_text = models.CharField(max_length=50, default=None)
     user_name = models.CharField(max_length=50, default=None)
 
     def __str__(self):
-        return self.user_name
+        return self.post_name
 
 
 

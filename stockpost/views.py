@@ -31,7 +31,14 @@ def content(request, slug):
     suggestion = list(sp.objects.all())
     items = rn.sample(suggestion, 3)
 
-    context = {'post' : post, 'post1' : items}
+    # Comments
+    comments = cm.objects.filter(post_id = post.post_id)
+    if len(comments) == 0:
+        comment_context = "No Comments Added"
+    else:
+        comment_context = comments
+        
+    context = {'post' : post, 'post1' : items, 'comments' : comment_context}
     return render(request, 'content.html', context)
 
 
@@ -210,9 +217,10 @@ def validate_comment(request):
     if request.method == 'POST':
         comment_text = request.POST['comment']
         post_id = sp.objects.get(post_id=2)
+        post_name = post_id.Name
         user_name = request.user
 
-        comment = cm(post_id=post_id, comment_text=comment_text, user_name = user_name)
+        comment = cm(post_id=post_id, comment_text=comment_text, user_name = user_name, post_name = post_name)
 
         comment.save()
 
