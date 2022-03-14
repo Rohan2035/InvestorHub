@@ -1,0 +1,49 @@
+<!-- Delete this file, It's for testing -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+{% block title %}  {% endblock %}
+<style>
+    body{
+        background-color: rgb(92, 207, 92);
+    }
+    h1{
+        color: rgb(8, 8, 8);
+    }
+    #commentLabel{
+        font-size: 35px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    <h1>Testing the Working of Comments</h1>
+    <br>
+    <div class="row">
+        <form action="/validateComment/" method="post">
+            {% csrf_token %}
+            <label for="comments" id="commentLabel">Add A Comment</label>
+            <br>
+            <textarea name="comment" id="comment" cols="50" rows="10"></textarea>
+            <br>
+            <button class="btn mb-2 mt-3">Submit</button>
+            <br>
+        </form>
+    </div>
+</div>
+
+
+<section>
+
+
+
+
+
+
+    
+</section>
+{% endblock %}

@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
-from stockpost.models import StockPosts as sp
+from stockpost.models import StockPosts as sp 
+from stockpost.models import comments as cm
 from django.contrib import messages
 import random as rn
 import os
@@ -205,4 +206,22 @@ def edit_post (request):
         return HttpResponse("Access Denied")
 
 
+def validate_comment(request):
+    if request.method == 'POST':
+        comment_text = request.POST['comment']
+        post_id = sp.objects.get(post_id=2)
+        user_name = request.user
+
+        comment = cm(post_id=post_id, comment_text=comment_text, user_name = user_name)
+
+        comment.save()
+
+        return HttpResponse("Comment Sucessfully Added")
+    else:
+        return HttpResponse("Illegal Access")
+
+
+
+def test(request):
+    return render(request, "Test.html")
 
