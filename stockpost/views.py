@@ -215,8 +215,9 @@ def edit_post (request):
 
 def validate_comment(request):
     if request.method == 'POST':
-        comment_text = request.POST['comment']
-        post_id = sp.objects.get(post_id=2)
+        comment_text = request.POST['commentText']
+        p_id = request.POST['postID']
+        post_id = sp.objects.get(post_id=p_id)
         post_name = post_id.Name
         user_name = request.user
 
@@ -224,12 +225,14 @@ def validate_comment(request):
 
         comment.save()
 
-        return HttpResponse("Comment Sucessfully Added")
+        # return HttpResponse(request.path)
+        return redirect("content", slug=post_id.slug)
+        
     else:
         return HttpResponse("Illegal Access")
 
 
-
+# Remove This
 def test(request):
     return render(request, "Test.html")
 
