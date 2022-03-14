@@ -209,6 +209,8 @@ def edit_post (request):
         return HttpResponse("Access Denied")
 
 
+
+# Validates Comments
 def validate_comment(request):
     if request.method == 'POST':
         comment_text = request.POST['commentText']
