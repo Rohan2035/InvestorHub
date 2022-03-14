@@ -343,7 +343,11 @@
           </form>
 
           <hr>
-          Comments
+          {% for i in comments %}
+          <span style="color:rgb(25, 131, 163)"><strong>{{i.user_name}}:</strong></span>
+          <p>{{i.comment_text}}</p>
+          <hr>
+          {% endfor %}
           </div>
 
         </div>

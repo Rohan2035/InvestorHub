@@ -33,12 +33,8 @@ def content(request, slug):
 
     # Comments
     comments = cm.objects.filter(post_id = post.post_id)
-    if len(comments) == 0:
-        comment_context = "No Comments Added"
-    else:
-        comment_context = comments
         
-    context = {'post' : post, 'post1' : items, 'comments' : comment_context}
+    context = {'post' : post, 'post1' : items, 'comments' : comments}
     return render(request, 'content.html', context)
 
 
@@ -232,7 +228,5 @@ def validate_comment(request):
         return HttpResponse("Illegal Access")
 
 
-# Remove This
-def test(request):
-    return render(request, "Test.html")
+
 

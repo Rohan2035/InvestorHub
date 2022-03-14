@@ -16,8 +16,5 @@ urlpatterns = [
     path('deletePost/', views.deletePost, name="delete"),
     path('editPost/', views.edit_post, name="editPost"),
     path('validateEdit/', views.validate_edit, name="validateEdit"),
-    path('validateComment/', views.validate_comment, name="validateComment"),
-
-    # Delete this
-    path('test/', views.test, name="test")
+    path('validateComment/', views.validate_comment, name="validateComment")
 ]
