@@ -5,7 +5,6 @@ x = document.querySelectorAll(".box");
 
 if (x.length == 0) {
   let head = document.querySelector('#heading-display-all');
-  console.log(head);
   head.innerHTML = 'No Posts Added';
 
 } else {
@@ -20,7 +19,6 @@ if (x.length == 0) {
 
 function deleteFunc (e) {
 
-  console.log(e.parentNode.id);
   let parent_id = e.parentNode.id;
   let del = document.querySelector(`#${parent_id}`);
   del.submit();
@@ -29,7 +27,6 @@ function deleteFunc (e) {
 
 function editFunc (e) {
   
-  console.log(e.parentNode.id);
   let parent_id = e.parentNode.id;
   let edit = document.querySelector(`#${parent_id}`);
   
